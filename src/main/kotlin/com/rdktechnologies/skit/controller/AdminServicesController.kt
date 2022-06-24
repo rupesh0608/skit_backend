@@ -52,9 +52,12 @@ class AdminServicesController {
     fun deleteServiceModule(@PathVariable(name = "id") id:Long):ResponseEntity<Any>{
            return service.deleteServiceModule(id)
     }
-    @PostMapping("/delete_service/{id}")
-    fun deleteService(@PathVariable(name = "id") id:Long):ResponseEntity<Any>{
-        return service.deleteService(id)
+    @PostMapping("/delete_service/{moduleId}/{serviceId}")
+    fun deleteService(
+        @PathVariable(name = "serviceId") serviceId:Long,
+        @PathVariable(name = "moduleId") moduleId:Long
+    ):ResponseEntity<Any>{
+        return service.deleteService(moduleId,serviceId)
     }
 //    @PostMapping("/update")
 //    fun updateService(@RequestBody(required = true) list:MutableList<Long>):ResponseEntity<Any>{

@@ -67,11 +67,18 @@ class ServicesService : IServicesService {
         return ResponseEntity.ok(SimpleResponse(true, 401, "Invalid module id"))
     }
 
-    override fun deleteService(serviceId: Long): ResponseEntity<Any> {
-        val data = serviceRepository.findById(serviceId)
-        if (data.isPresent) {
-            serviceRepository.deleteById(serviceId)
-            return ResponseEntity.ok(SimpleResponse(false, 200, "Service Deleted Successfully...."))
+    override fun deleteService(moduleId: Long,serviceId: Long): ResponseEntity<Any> {
+        if(serviceModuleRepository.findById(moduleId).isPresent){
+            val serviceModule=serviceModuleRepository.findById(moduleId).get()
+            val data = serviceRepository.findById(serviceId)
+            if (data.isPresent) {
+                if(serviceModule.services?.contains(data.get()) == true){
+                    serviceModule.services!!.remove(data.get())
+                }
+                serviceModuleRepository.save(serviceModule)
+                return ResponseEntity.ok(SimpleResponse(false, 200, "Service Deleted Successfully...."))
+            }
+            return ResponseEntity.ok(SimpleResponse(true, 401, "Invalid Service id"))
         }
         return ResponseEntity.ok(SimpleResponse(true, 401, "Invalid module id"))
 

@@ -10,7 +10,7 @@ interface IServicesService {
  fun createServiceModule(name:String,image:MultipartFile):ResponseEntity<Any>
  fun createService(moduleId:Long,name:String,image:MultipartFile,link:String):ResponseEntity<Any>
  fun deleteServiceModule(moduleId:Long):ResponseEntity<Any>
- fun deleteService(serviceId:Long):ResponseEntity<Any>
+ fun deleteService(moduleId: Long,serviceId:Long):ResponseEntity<Any>
  fun enableService(serviceId:Long):ResponseEntity<Any>
  fun enableServiceModule(moduleId:Long):ResponseEntity<Any>
 }
