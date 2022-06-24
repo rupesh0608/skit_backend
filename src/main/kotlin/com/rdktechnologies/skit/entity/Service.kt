@@ -13,4 +13,5 @@ data class Service(
     var image:String?=null,
     var name: String? = null,
     var link: String? = null,
+    var isActive:Boolean?=false,
 )

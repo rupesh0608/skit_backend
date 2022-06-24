@@ -11,4 +11,6 @@ interface IServicesService {
  fun createService(moduleId:Long,name:String,image:MultipartFile,link:String):ResponseEntity<Any>
  fun deleteServiceModule(moduleId:Long):ResponseEntity<Any>
  fun deleteService(serviceId:Long):ResponseEntity<Any>
+ fun enableService(serviceId:Long):ResponseEntity<Any>
+ fun enableServiceModule(moduleId:Long):ResponseEntity<Any>
 }

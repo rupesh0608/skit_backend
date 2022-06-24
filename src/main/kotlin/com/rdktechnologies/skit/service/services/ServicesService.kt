@@ -67,10 +67,6 @@ class ServicesService : IServicesService {
         return ResponseEntity.ok(SimpleResponse(true, 401, "Invalid module id"))
     }
 
-    //    override fun updateService(): ResponseEntity<Any> {
-//        TODO("Not yet implemented")
-//    }
-//
     override fun deleteService(serviceId: Long): ResponseEntity<Any> {
         val data = serviceRepository.findById(serviceId)
         if (data.isPresent) {
@@ -80,10 +76,38 @@ class ServicesService : IServicesService {
         return ResponseEntity.ok(SimpleResponse(true, 401, "Invalid module id"))
 
     }
-//
-//    override fun enableService(): ResponseEntity<Any> {
-//        TODO("Not yet implemented")
-//    }
+
+    override fun enableService(serviceId: Long): ResponseEntity<Any> {
+
+        if(!serviceRepository.findById(serviceId).isPresent)
+            return ResponseEntity.ok(SimpleResponse(true, 404, "Invalid Service Id"))
+        val service=serviceRepository.findById(serviceId).get()
+        return if(service.isActive==false){
+            service.isActive=true
+            serviceRepository.save(service)
+            ResponseEntity.ok(SimpleResponse(false, 200, "Service Enabled Successfully..."))
+        }else{
+            service.isActive=false
+            serviceRepository.save(service)
+            ResponseEntity.ok(SimpleResponse(false, 200, "Service disabled Successfully..."))
+        }
+
+    }
+
+    override fun enableServiceModule(moduleId: Long): ResponseEntity<Any> {
+        if(!serviceModuleRepository.findById(moduleId).isPresent)
+            return ResponseEntity.ok(SimpleResponse(true, 404, "Invalid Service Id"))
+        val serviceModule=serviceModuleRepository.findById(moduleId).get()
+        return if(serviceModule.isActive==false){
+            serviceModule.isActive=true
+            serviceModuleRepository.save(serviceModule)
+            ResponseEntity.ok(SimpleResponse(false, 200, "Service Module Enabled Successfully..."))
+        }else{
+            serviceModule.isActive=false
+            serviceModuleRepository.save(serviceModule)
+            ResponseEntity.ok(SimpleResponse(false, 200, "Service Module disabled Successfully..."))
+        }
+    }
 
 
 }

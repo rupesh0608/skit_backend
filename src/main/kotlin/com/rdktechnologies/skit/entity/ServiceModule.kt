@@ -9,6 +9,7 @@ data class ServiceModule(
     var id: Long? = null,
     var image:String?=null,
     var name: String? = null,
+    var isActive:Boolean?=false,
     @OneToMany(cascade = [CascadeType.ALL])
     var services:MutableList<Service>?= mutableListOf(),
 )

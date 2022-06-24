@@ -61,10 +61,14 @@ class AdminServicesController {
 //        return service.updateService()
 //    }
 //
-//    @PostMapping("/enable")
-//    fun enableService(@RequestBody(required = true) list:MutableList<Long>):ResponseEntity<Any>{
-//        return service.enableService()
-//    }
+    @PostMapping("/enable_disable_service_module/{id}")
+    fun enableDisableServiceModule(@PathVariable(name = "id") moduleId: Long):ResponseEntity<Any>{
+        return service.enableServiceModule(moduleId)
+    }
+    @PostMapping("/enable_disable_service/{id}")
+    fun enableDisableService(@PathVariable(name = "id") serviceId: Long):ResponseEntity<Any>{
+        return service.enableService(serviceId)
+    }
 //    @PostMapping("/upload_logo")
 //    fun uploadServiceLogo(@RequestParam("logo", required = true)
 //                          logo: MultipartFile,):ResponseEntity<Any>{
