@@ -48,7 +48,14 @@ class AdminServicesController {
     ):ResponseEntity<Any>{
         return service.createService(moduleId,name,image,link)
     }
-
+    @PostMapping("/delete_service_module/{id}")
+    fun deleteServiceModule(@PathVariable(name = "id") id:Long):ResponseEntity<Any>{
+           return service.deleteServiceModule(id)
+    }
+    @PostMapping("/delete_service/{id}")
+    fun deleteService(@PathVariable(name = "id") id:Long):ResponseEntity<Any>{
+        return service.deleteService(id)
+    }
 //    @PostMapping("/update")
 //    fun updateService(@RequestBody(required = true) list:MutableList<Long>):ResponseEntity<Any>{
 //        return service.updateService()
@@ -66,10 +73,7 @@ class AdminServicesController {
 //        url += FileHelper().createFileAndGetUrl(logo)
 //        return ResponseEntity.ok(SimpleResponse(false,200,url))
 //    }
-//    @PostMapping("/delete/{id}")
-//    fun deleteService(@PathVariable(name = "id") id:Long):ResponseEntity<Any>{
-//           return service.deleteService(id)
-//    }
+
 //
 
 }
