@@ -13,5 +13,6 @@ data class Jobs(
     var postDate:String?=null,
     var lastDate:String?=null,
     var category:String?=null,
-    var status:String?="draft"
+    var status:String?="draft",
+    var remainingDays:Int?=0
 )
