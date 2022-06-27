@@ -2,6 +2,7 @@ package com.rdktechnologies.skit.service.jobs
 
 
 import com.ongraph.daverick.recipie.social.app.constants.Roles
+import com.rdktechnologies.skit.entity.Eligibility
 import com.rdktechnologies.skit.entity.Jobs
 import com.rdktechnologies.skit.entity.User
 import com.rdktechnologies.skit.error.exceptions.JobNotFoundException
@@ -22,6 +23,8 @@ class JobsService : IJobsService {
 
     @Autowired
     private lateinit var jobsRepository: JobsRepository
+    @Autowired
+    private lateinit var eligibilityRepository: EligibilityRepository
 
     override fun saveJob(jobsDto: JobDto): ResponseEntity<Any> {
         jobsRepository.save(Jobs(
@@ -87,6 +90,19 @@ class JobsService : IJobsService {
 
     override fun getAllJob(): ResponseEntity<Any> {
         return ResponseEntity.ok(AllJobsResponse(false,"",jobsRepository.findAll()))
+    }
+
+    override fun createEligibility(keyword: String): ResponseEntity<Any> {
+         eligibilityRepository.save(Eligibility(name = keyword))
+        return ResponseEntity.ok(SimpleResponse(false,200,"Eligibility created successfully..."))
+    }
+
+    override fun getAllEligibility(): ResponseEntity<Any> {
+       return if(eligibilityRepository.findAll().isEmpty()){
+           ResponseEntity.ok(SimpleResponse(false,200,"No Eligibility Found.", mutableListOf<Eligibility>()))
+        }else{
+           ResponseEntity.ok(SimpleResponse(false,200,"Eligibility list found.",eligibilityRepository.findAll()))
+        }
     }
 
 

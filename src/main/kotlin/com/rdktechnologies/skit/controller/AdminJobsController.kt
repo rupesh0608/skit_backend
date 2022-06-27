@@ -41,9 +41,17 @@ class AdminJobsController {
     fun unPublishJob(@RequestBody(required = true) publishUnpublishJobdto: publish_unpublish_JobDto):ResponseEntity<Any>{
         return jobsService.unPublishJob(publishUnpublishJobdto.id)
     }
+    @PostMapping("/create_eligibility")
+    fun createEligibility(@RequestParam(name="keyword") keyword:String):ResponseEntity<Any>{
+        return jobsService.createEligibility(keyword)
+    }
     @GetMapping("/all")
     fun getAllJobs():ResponseEntity<Any>{
         return jobsService.getAllJob()
+    }
+    @GetMapping("/all_eligibility")
+    fun getAllEligibility():ResponseEntity<Any>{
+        return jobsService.getAllEligibility()
     }
 
 }
