@@ -28,4 +28,7 @@ class AppVerificationController {
         return verificationService.uploadDocuments(userId,document10,document12,documentGraduation,documentCertificates)
     }
 
+
+
+
 }

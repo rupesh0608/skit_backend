@@ -14,4 +14,5 @@ interface IVerificationService {
         documentGraduation: Optional<MultipartFile>? = null,
         documentCertificates: Optional<MultipartFile>? = null,
     ): ResponseEntity<Any>
+    fun getVerificationList():ResponseEntity<Any>
 }

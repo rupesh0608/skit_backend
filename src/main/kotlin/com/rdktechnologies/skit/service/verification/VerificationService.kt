@@ -95,4 +95,10 @@ class VerificationService: IVerificationService {
         return ResponseEntity.ok(SimpleResponse(false,200,"Documents Successfully Sent for Verification"))
     }
 
+    override fun getVerificationList(): ResponseEntity<Any> {
+          val data=documentVerificationRepository.findAll()
+        return ResponseEntity.ok(SimpleResponse(false,200,"",data))
+    }
+
+
 }

@@ -4,6 +4,7 @@ package com.rdktechnologies.skit.controller
 import com.rdktechnologies.skit.model.dto.app.*
 import com.rdktechnologies.skit.service.auth.IAuthService
 import com.rdktechnologies.skit.service.users.UsersService
+import com.rdktechnologies.skit.service.verification.VerificationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -20,6 +21,8 @@ class AdminUsersController {
     private lateinit var authService : IAuthService
     @Autowired
     private lateinit var usersService: UsersService
+    @Autowired
+    private lateinit var verificationService: VerificationService
 
     @GetMapping("/all")
     fun getAllUsers():ResponseEntity<Any>{
@@ -37,6 +40,10 @@ class AdminUsersController {
     @PostMapping("/delete")
     fun deleteUsers(@RequestBody(required = true) list:MutableList<Long>):ResponseEntity<Any>{
         return usersService.deleteUsers(list)
+    }
+    @GetMapping("/all_verification_list")
+    fun getAllVerifications():ResponseEntity<Any>{
+        return verificationService.getVerificationList()
     }
 
 }
