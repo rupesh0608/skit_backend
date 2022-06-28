@@ -39,7 +39,7 @@ class VerificationService: IVerificationService {
             if (!profileData.isEmpty && profileData.contentType?.contains("image") == true) {
                 val d=Document(
                     type="10th Result",
-                    documentUrl = FileHelper().createFileAndGetUrl(profileData)
+                    documentUrl ="https://s-kit.herokuapp.com${FileHelper().createFileAndGetUrl(profileData)}"
                 )
                 documentRepository.save(d)
                 documents.add(d)
@@ -52,7 +52,7 @@ class VerificationService: IVerificationService {
             if (!profileData.isEmpty && profileData.contentType?.contains("image") == true) {
                 val d=Document(
                     type="12th Result",
-                    documentUrl = FileHelper().createFileAndGetUrl(profileData)
+                    documentUrl ="https://s-kit.herokuapp.com${FileHelper().createFileAndGetUrl(profileData)}"
                 )
                 documentRepository.save(d)
                 documents.add(d)
@@ -64,7 +64,7 @@ class VerificationService: IVerificationService {
             if (!profileData.isEmpty && profileData.contentType?.contains("image") == true) {
                 val d=Document(
                     type="Graduation Result",
-                    documentUrl = FileHelper().createFileAndGetUrl(profileData)
+                    documentUrl ="https://s-kit.herokuapp.com${FileHelper().createFileAndGetUrl(profileData)}"
                 )
                 documentRepository.save(d)
                 documents.add(d)
@@ -76,7 +76,7 @@ class VerificationService: IVerificationService {
             if (!profileData.isEmpty && profileData.contentType?.contains("image") == true) {
                 val d=Document(
                     type="Experience Certificates",
-                    documentUrl = FileHelper().createFileAndGetUrl(profileData)
+                    documentUrl ="https://s-kit.herokuapp.com${FileHelper().createFileAndGetUrl(profileData)}"
                 )
                 documentRepository.save(d)
                 documents.add(d)

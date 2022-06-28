@@ -18,4 +18,5 @@ data class DocumentVerification(
         @OneToMany(cascade = [CascadeType.ALL])
         var documents:Collection<Document>?=null,
         var status:String?="none",
+        var message:String?="none"
 )
