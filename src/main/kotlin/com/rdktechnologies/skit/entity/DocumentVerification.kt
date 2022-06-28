@@ -13,7 +13,7 @@ data class DocumentVerification(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long? = null,
-        @OneToOne(cascade = [CascadeType.ALL])
+        @ManyToOne(cascade = [CascadeType.ALL])
         var user:User?=null,
         @OneToMany(cascade = [CascadeType.ALL])
         var documents:Collection<Document>?=null,
